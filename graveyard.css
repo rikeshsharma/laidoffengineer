@@ -1,0 +1,54 @@
+/* The Graveyard: a Three.js canvas with a light game HUD on top. */
+.cemetery{position:relative;min-height:0;border-radius:22px;border:1px solid #dfe4d3;overflow:hidden;background:linear-gradient(#3f9df5,#cfeeff 60%,#7cc35a 60%);user-select:none;-webkit-user-select:none;-webkit-touch-callout:none}
+.graveyard-world{position:absolute;inset:0}
+.graveyard-canvas{display:block;width:100%;height:100%;touch-action:none;cursor:grab}
+.graveyard-canvas:active{cursor:grabbing}
+.cemetery-loading{position:absolute;inset:0;display:grid;place-items:center;margin:0;font-family:Newsreader,Georgia,serif;font-size:26px;color:#fbf8f1;text-shadow:0 2px 12px #1d3a5c55}
+.cemetery-empty{position:absolute;left:0;right:0;top:38%;text-align:center;pointer-events:none;color:#fbf8f1;text-shadow:0 2px 14px #1d3a5c66}
+.cemetery-empty h2{font-family:Newsreader,Georgia,serif;font-size:30px;font-weight:550;margin:0}
+.cemetery-hint{position:absolute;left:16px;bottom:calc(18px + env(safe-area-inset-bottom));margin:0;padding:7px 12px;border-radius:30px;background:#fbf8f1e0;font-size:11px;color:#4b5440;pointer-events:none;box-shadow:0 3px 14px #1d3a5c1f}
+.cemetery-now-playing{position:absolute;left:16px;bottom:calc(56px + env(safe-area-inset-bottom));max-width:min(420px,calc(100% - 32px));margin:0;padding:6px 12px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;border-radius:30px;background:#24261fcc;color:var(--paper);font-size:11px;pointer-events:none}
+.hint-touch{display:none}
+@media(hover:none) and (pointer:coarse){.hint-pointer{display:none}.hint-touch{display:inline}}
+.section-actions,.cemetery-actions{display:flex;align-items:center;gap:6px}
+.section-actions{gap:10px}
+.cemetery-actions button,.cemetery-prompt button,.cemetery-jump{background:#fbf8f1f0;border:1px solid #fff;box-shadow:0 3px 14px #1d3a5c26;font-size:11px;font-weight:600}
+.cemetery-actions button{min-height:34px;padding:7px 13px;border-radius:30px}
+.cemetery-actions button:hover,.cemetery-prompt button:hover{background:#fff}
+.cemetery-prompt{position:absolute;left:50%;bottom:calc(18px + env(safe-area-inset-bottom));transform:translateX(-50%);display:flex;align-items:center;gap:12px;max-width:calc(100% - 28px);padding:7px 7px 7px 16px;border-radius:30px;background:#24261fe6;color:var(--paper);box-shadow:0 6px 24px #1d3a5c40}
+.prompt-name{overflow:hidden;white-space:nowrap;text-overflow:ellipsis;font-family:Newsreader,Georgia,serif;font-size:17px;font-style:italic}
+.cemetery-prompt button{flex-shrink:0;min-height:34px;padding:6px 8px 6px 13px;border-radius:30px;color:var(--ink)}
+.cemetery-prompt kbd{display:inline-block;margin-left:6px;padding:2px 6px;border-radius:6px;background:var(--ink);color:var(--paper);font:600 10px Figtree,sans-serif}
+.cemetery-stick{position:absolute;width:112px;height:112px;margin:-56px 0 0 -56px;border-radius:50%;background:#fbf8f133;border:2px solid #fbf8f1b3;pointer-events:none}
+.cemetery-stick span{position:absolute;left:50%;top:50%;width:48px;height:48px;margin:-24px 0 0 -24px;border-radius:50%;background:#fbf8f1e6;box-shadow:0 3px 12px #1d3a5c33}
+.cemetery-jump{display:none;position:absolute;right:16px;bottom:calc(16px + env(safe-area-inset-bottom));width:62px;height:62px;border-radius:50%;font-size:24px;touch-action:none}
+.cemetery-jump:active{background:var(--ink);color:var(--paper)}
+@media(hover:none) and (pointer:coarse){.cemetery-jump{display:block}.cemetery-prompt kbd{display:none}.cemetery-prompt{bottom:calc(92px + env(safe-area-inset-bottom))}}
+.cemetery.is-fallback{background:#e9eddf}
+.cemetery-fallback{position:absolute;inset:0;overflow:auto;display:flex;flex-wrap:wrap;align-content:flex-start;gap:8px;padding:64px 20px 20px}
+.cemetery-fallback p{flex-basis:100%;margin:0 0 6px;color:#5f6d4e}
+.cemetery.is-fallback .cemetery-hint,.collection-view:has(.is-fallback) .cemetery-actions{display:none}
+
+@media(max-width:600px){
+  .cemetery{border-radius:14px}
+  .cemetery-hint{left:10px;font-size:10px;padding:6px 9px;max-width:calc(100% - 92px)}
+  .cemetery-actions button{min-height:30px;padding:6px 10px;font-size:10px}
+  .cemetery-empty h2{font-size:24px}
+  .prompt-name{font-size:15px}
+  .cemetery-now-playing{left:10px;bottom:calc(50px + env(safe-area-inset-bottom));max-width:calc(100% - 92px);font-size:10px}
+}
+
+/* On the Graveyard page the world fills the screen and the page chrome floats above it. */
+[data-page=graveyard] .cemetery:not(.is-fallback){position:fixed;inset:0;z-index:0;border:0;border-radius:0}
+[data-page=graveyard] .header,[data-page=graveyard] .section-heading{position:relative;z-index:2;pointer-events:none}
+[data-page=graveyard] .header>*,[data-page=graveyard] .section-heading>*{pointer-events:auto}
+[data-page=graveyard] .header-about{padding:9px 14px;border-radius:30px;background:#fbf8f1f0;color:var(--ink);box-shadow:0 3px 14px #1d3a5c26}
+[data-page=graveyard] .section-heading{flex-wrap:wrap}
+[data-page=graveyard] .section-heading>div:first-child{padding:12px 18px;border-radius:18px;background:#fbf8f1eb;box-shadow:0 6px 24px #1d3a5c26}
+[data-page=graveyard] .section-title{font-size:34px}
+@media(max-width:1000px){.cemetery:has(.cemetery-prompt:not([hidden])) .cemetery-hint{display:none}}
+@media(max-width:600px){
+  [data-page=graveyard] .section-heading>div:first-child{padding:9px 13px;border-radius:14px}
+  [data-page=graveyard] .section-title{font-size:26px}
+  [data-page=graveyard] .section-actions{gap:6px}
+}

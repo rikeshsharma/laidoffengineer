@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#fbf8f1">
+  <meta name="description" content="Your job got deleted. Your sense of humor didn't. A deeply unserious playground for engineers between opportunities.">
+  <meta property="og:title" content="Laid off. Still a legend.">
+  <meta property="og:description" content="Spin for a joke. Stay for the photobooth, corporate graveyard, and résumé roulette.">
+  <meta property="og:type" content="website">
+  <title>Laid Off Engineer — Still a legend.</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="preload" href="assets/fonts/newsreader-roman.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/figtree.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="navigation.css">
+  <link rel="stylesheet" href="graveyard.css">
+  <script src="music.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <div class="page-shell">
+    <header class="header">
+      <a class="brand-logo" href="#home" data-page="home" aria-label="laidoffengineer.lol home"><img src="assets/favicon.svg" alt="" width="48" height="48"></a>
+      <nav class="navigation-dock" aria-label="Main navigation">
+        <a href="#home" data-page="home" aria-current="page" aria-controls="home-view"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3 10 9-7 9 7v11h-6v-7H9v7H3z"/></svg><span>Home</span></a>
+        <a href="#graveyard" data-page="graveyard" aria-controls="graveyard-view"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 21V10a7 7 0 0 1 14 0v11M3 21h18M9 10h6m-3-3v7"/></svg><span>Graveyard</span></a>
+        <a href="#community" data-page="community" aria-controls="community-view"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h15v11H9l-4 4v-4H3zM10 18h7l4 3V8"/></svg><span>Community<small>Coming soon</small></span></a>
+      </nav>
+      <button class="header-about" data-open="about">About <span aria-hidden="true">↗</span></button>
+    </header>
+    <main>
+      <section id="home-view" class="site-view home-view" aria-label="Home">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <h1 id="hero-title">Laid off.<br> Still a <em>legend.</em></h1>
+          <p>Your job got deleted. Your humor didn’t.</p>
+        </div>
+        <div class="roulette">
+          <div class="wheel-frame">
+            <div class="wheel-pointer" aria-hidden="true"></div>
+            <div class="wheel-rotor" aria-hidden="true"></div>
+            <button class="wheel-spin" id="spin-wheel" aria-label="Spin the wheel" aria-describedby="wheel-help"><span aria-hidden="true">↻</span><span class="spin-label">SPIN</span></button>
+          </div>
+          <span id="wheel-help" class="visually-hidden">A 50% chance to open the photobooth and request camera access. Otherwise, reveal a hidden joke.</span>
+          <span class="wheel-status" role="status" aria-live="polite"></span>
+        </div>
+        <div class="badge-art">
+          <div class="lanyard" aria-hidden="true"></div><div class="badge-clip" aria-hidden="true"></div>
+          <button class="id-card" type="button" aria-label="Scan your old employee badge"><span class="id-inner" aria-hidden="true"><span class="id-topline">TOTALLY EMPLOYED INC. <span>✳</span></span><span class="id-photo"><svg viewBox="0 0 140 130"><path fill="#8f9cce" d="M14 130c0-35 26-47 56-47s56 12 56 47"/><path fill="#e6b99c" d="M53 75h34v30H53z"/><ellipse cx="70" cy="49" rx="31" ry="37" fill="#ecc3a6"/><path fill="#33302c" d="M39 50c-9-38 14-47 35-44 24 1 31 17 27 44L89 29c-13 9-30 9-41 2z"/><path d="M51 50h14m12 0h14M65 51h12" stroke="#33302c" stroke-width="4"/><path d="M61 72q9-8 18 0" fill="none" stroke="#b17363" stroke-width="3"/></svg></span><span class="id-title">Valued employee</span><span class="id-barcode"></span><span class="id-number">EMPLOYEE #404</span><span class="redundant-stamp">LAID OFF</span></span></button>
+        </div>
+        <div class="computer-art" aria-hidden="true"><span class="computer-spark spark-one">✳</span><img src="assets/blue-computer.png" alt="" width="500" height="500"><div class="computer-sticker">404<span>JOB NOT FOUND</span></div></div>
+        <span class="tiny-spark" aria-hidden="true">✦</span>
+      </section>
+      <nav class="playground" aria-label="Choose a coping mechanism">
+        <button class="experience camera-card" data-open="camera"><span class="experience-main"><svg class="experience-icon" viewBox="0 0 48 48" aria-hidden="true"><path d="M7 15h9l4-6h10l4 6h7v26H7z"/><circle cx="25" cy="27" r="8"/><path d="M11 20h4"/></svg><span><strong>Photobooth</strong></span><span class="action-arrow" aria-hidden="true">↗</span></span></button>
+        <button class="experience grave-card" data-open="grave"><span class="experience-main"><svg class="experience-icon" viewBox="0 0 48 48" aria-hidden="true"><path d="M10 40V20a14 14 0 0 1 28 0v20M6 41h36M18 20h12m-6-6v15"/></svg><span><strong>Add a tomb</strong></span><span class="action-arrow" aria-hidden="true">↗</span></span></button>
+        <button class="experience resume-card" data-open="resume"><span class="experience-main"><svg class="experience-icon" viewBox="0 0 48 48" aria-hidden="true"><path d="M12 5h18l8 9v29H12zM29 5v10h9M19 23h12M19 29h12M19 35h7"/></svg><span><strong>Résumé roulette</strong></span><span class="action-arrow" aria-hidden="true">↗</span></span></button>
+      </nav>
+      </section>
+      <section id="graveyard-view" class="site-view collection-view" aria-labelledby="graveyard-title" hidden>
+        <div class="section-heading">
+          <div><h1 class="section-title" id="graveyard-title" tabindex="-1">Rest in <em>pivot.</em></h1><p class="section-caption" id="cemetery-count" role="status"></p></div>
+          <div class="section-actions"><div class="cemetery-actions"><button id="music-toggle" data-music-toggle aria-pressed="true">🔊 Music</button><button id="music-next" aria-label="Next track" hidden>⏭</button><button id="graveyard-gate">Gate</button><button id="graveyard-newest">Newest tomb</button></div><button class="primary" data-open="grave">Add a tomb +</button></div>
+        </div>
+        <div class="cemetery" id="cemetery">
+          <div class="graveyard-world" id="graveyard-world"></div>
+          <p class="cemetery-loading" id="cemetery-loading" role="status">Digging the graveyard…</p>
+          <div class="cemetery-empty" id="cemetery-empty" hidden><h2>No tombs yet.</h2></div>
+          <p class="cemetery-now-playing" id="now-playing" hidden>♪ <span></span></p>
+          <p class="cemetery-hint" id="cemetery-hint"><span class="hint-pointer">WASD to roam · Shift to run · Space to jump · drag to look</span><span class="hint-touch">Left thumb to roam · drag to look</span></p>
+          <div class="cemetery-prompt" id="cemetery-prompt" role="status" hidden><span class="prompt-name"></span><button id="cemetery-read">Read <kbd>E</kbd></button></div>
+          <div class="cemetery-stick" id="cemetery-stick" aria-hidden="true" hidden><span></span></div>
+          <button class="cemetery-jump" id="cemetery-jump" aria-label="Jump">⤒</button>
+        </div>
+      </section>
+      <section id="community-view" class="site-view community-view" aria-labelledby="community-title" hidden>
+        <div class="section-heading"><h1 class="section-title" id="community-title" tabindex="-1">Community <em>forums.</em></h1><span class="coming-soon-badge">Coming soon</span></div>
+        <div class="forum-shell">
+          <nav class="forum-categories" aria-label="Forum categories">
+            <button data-category="All discussions" aria-pressed="true">All discussions <span aria-hidden="true">↗</span></button>
+            <button data-category="Venting" aria-pressed="false">Venting <span aria-hidden="true">↗</span></button>
+            <button data-category="Job leads" aria-pressed="false">Job leads <span aria-hidden="true">↗</span></button>
+            <button data-category="Interview help" aria-pressed="false">Interview help <span aria-hidden="true">↗</span></button>
+            <button data-category="Side projects" aria-pressed="false">Side projects <span aria-hidden="true">↗</span></button>
+          </nav>
+          <div class="forum-panel"><div class="forum-toolbar"><h2 id="forum-category-title">All discussions</h2><button class="secondary" disabled aria-describedby="community-notice">New topic +</button></div><div class="forum-empty"><svg viewBox="0 0 80 80" aria-hidden="true"><path d="M10 14h45v30H29L17 54V44h-7zM34 51v10h20l11 9v-9h5V31H61M21 25h23M21 34h15"/></svg><p id="community-notice" role="status">Discussions open soon.</p></div></div>
+        </div>
+      </section>
+    </main>
+  </div>
+  <dialog id="experience-dialog" aria-labelledby="dialog-title"><div class="dialog-top"><span class="dialog-kicker" id="dialog-kicker"></span><button class="close-button" aria-label="Close experience">×</button></div><div id="dialog-content"></div></dialog>
+  <div class="toast" role="status" aria-live="polite"></div>
+  <div id="print-sheet"></div>
+</body>
+</html>
